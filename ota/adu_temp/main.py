@@ -1,7 +1,7 @@
 """
 main.py — ADU temperature monitor.
 
-Reads a DS18B20 on GPIO 4 (4.7k pull-up to 3.3V) and reports the temperature
+Reads a DS18B20 on GPIO 33 (4.7k pull-up to 3.3V) and reports the temperature
 to the same Railway backend as the garage door monitor. Railway owns the
 alert decision and sends the Telegram message — this device never talks to
 Telegram directly.
@@ -17,7 +17,7 @@ import time
 import gc
 import config
 
-SENSOR_PIN = 4              # DS18B20 data line
+SENSOR_PIN = 33             # DS18B20 data line
 POLL_INTERVAL_S = 60        # read the sensor once a minute
 HEARTBEAT_INTERVAL_S = 300  # report at least every 5 min (keeps silence alert quiet)
 CHANGE_THRESHOLD_F = 1.0    # report early if temp moves this much since last report
