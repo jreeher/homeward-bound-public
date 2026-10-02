@@ -119,8 +119,11 @@ def main():
     print("ADU Temperature Sensor Starting...")
 
     if not ensure_wifi():
-        log_error("Cannot proceed without WiFi connection")
-        return
+        # e.g. after a power cut the router can come up slower than the
+        # board — reboot and try again rather than sitting idle forever
+        log_error("Cannot proceed without WiFi connection, rebooting in 30s")
+        time.sleep(30)
+        machine.reset()
 
     rom = find_sensor()
     last_reported = None
